@@ -1,5 +1,7 @@
 # 第1段階　まず点滅させるだけ
 
+テストです。
+
 ## レイアウトスクリプト
 ```py
 def vrmevent(obj,ev,param):　　　　　　　　defineの意味
