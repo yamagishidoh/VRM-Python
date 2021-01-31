@@ -1,8 +1,7 @@
-# あさささささささ
 # 第1段階　まず点滅させるだけ
 
 レイアウトスクリプト
-```
+```py
 def vrmevent(obj,ev,param):　　　　　　　　defineの意味
     toruo.activate(obj, ev,param)
     if ev == 'init':
