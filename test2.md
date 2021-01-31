@@ -1,6 +1,6 @@
 # 第1段階　まず点滅させるだけ
 
-レイアウトスクリプト
+## レイアウトスクリプト
 ```py
 def vrmevent(obj,ev,param):　　　　　　　　defineの意味
     toruo.activate(obj, ev,param)
@@ -31,12 +31,14 @@ def vrmevent(obj,ev,param):　　　　　　　　defineの意味
           ca2.SetOptionDisp(0, False)
           sw = 0
 ```
--------------------------
+<br/>
+<br/>
+<br/>
 
 # 第2段階　自動センサー踏んだら動きなさいバージョン
 
-●レイアウトのスクリプト
-```
+## レイアウトのスクリプト
+```py
 #LAYOUT
 import vrmapi
 import toruo
@@ -94,9 +96,8 @@ def vrmevent(obj,ev,param):
         dummy = 1
 ```
 
-# ●閉じる方の自動センサー
-```
-#OBJID=8
+## ●閉じる方の自動センサー
+```py
 import vrmapi
 def vrmevent_8(obj,ev,param):
     if ev == 'init':
@@ -117,9 +118,9 @@ def vrmevent_8(obj,ev,param):
         dummy = 1
 ```
 
-# ●通過後開く方の自動センサー
-```
-#OBJID=19
+## ●通過後開く方の自動センサー
+```py
+
 import vrmapi
 def vrmevent_19(obj,ev,param):
     if ev == 'init':
@@ -138,4 +139,54 @@ def vrmevent_19(obj,ev,param):
         global sw2
         sw2=0
         dummy = 1
+```
+
+# 第3段階　単線・双方向で踏切制御
+
+## レイアウトスクリプト
+変更なし
+
+## 踏切閉じる側の両方のセンサー
+```py
+import vrmapi
+def vrmevent_8(obj,ev,param):
+    if ev == 'init':
+        dummy = 1
+    elif ev == 'broadcast':
+        dummy = 1
+    elif ev == 'timer':
+        dummy = 1
+    elif ev == 'time':
+        dummy = 1
+    elif ev == 'after':
+        dummy = 1
+    elif ev == 'frame':
+        dummy = 1
+    elif ev == 'catch':
+        if obj.GetForward() == 1: #←ここが追加した部分　もしセンサーが順方向で検出したらという意味
+         global sw2
+         sw2=1
+         dummy = 1
+```
+## 踏切開く側の両方のセンサー
+```py
+import vrmapi
+def vrmevent_19(obj,ev,param):
+    if ev == 'init':
+        dummy = 1
+    elif ev == 'broadcast':
+        dummy = 1
+    elif ev == 'timer':
+        dummy = 1
+    elif ev == 'time':
+        dummy = 1
+    elif ev == 'after':
+        dummy = 1
+    elif ev == 'frame':
+        dummy = 1
+    elif ev == 'catch':
+        if obj.GetForward() == 1: #←ここが追加した部分　もしセンサーが順方向で検出したらという意味
+         global sw2
+         sw2=0
+         dummy = 1
 ```
