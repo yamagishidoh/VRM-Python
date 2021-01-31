@@ -7,7 +7,7 @@ def vrmevent(obj,ev,param):　　　　　　　　defineの意味
     if ev == 'init':
         obj.SetEventKeyDown('A')
         obj.SetEventKeyDown('Z')
-#        toruo.jump_toruo(1)
+        toruo.jump_toruo(0)　　　#←注意 0番とは位置0番という意味。保存位置を先にきっちりしておくこと。
         obj.SetEventTimer(0.5)　　　　　間隔の秒数をぶっこむ
         dummy = 1
     elif ev == 'broadcast':
@@ -51,7 +51,7 @@ def vrmevent(obj,ev,param):
     if ev == 'init':
         obj.SetEventKeyDown('A')
         obj.SetEventKeyDown('Z')
-#        toruo.jump_toruo(1)
+        toruo.jump_toruo(0)
         obj.SetEventTimer(0.5)
         dummy = 1
     elif ev == 'broadcast':
